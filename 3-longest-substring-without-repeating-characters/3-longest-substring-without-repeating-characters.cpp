@@ -8,9 +8,9 @@ public:
                 mx = max(mx, temp);
                 int x = arr[s[i] - ' '];
                 temp = i - x;
-                for(int k = 0; k<=x; k++){
-                    if(arr[s[k] - ' ']<=x){
-                      arr[s[k] - ' '] = -1;
+                for(int k = 0; k<256; k++){
+                    if(arr[k]<=x){
+                      arr[k] = -1;
                     }
                 }
                 arr[s[i] - ' '] = i;
