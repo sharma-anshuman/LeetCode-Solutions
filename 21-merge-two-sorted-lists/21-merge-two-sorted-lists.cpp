@@ -23,7 +23,6 @@ public:
                 temp = list1;
                 list1 = list1->next;
             }
-            
             temp->next = list2;
             swap(list1, list2);
             
