@@ -8,8 +8,9 @@ public:
             if(nums[i]>0) break;
            int target = (-1)*nums[i];
            int l = i+1, h = n-1;
-            if(nums[i]+nums[l]>0) break;
+            if(nums[i]+nums[l]>target) break;
            while(l<h){
+               if(nums[i]+nums[l]>target) break;
                if(nums[l] + nums[h] == target){
                    vector<int> xy(3);
                    xy[0] = nums[i], xy[1] = nums[l], xy[2] = nums[h];
