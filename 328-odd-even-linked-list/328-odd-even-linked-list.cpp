@@ -12,21 +12,17 @@ class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
         if(head==NULL)return head;
-        ListNode* temp = head, *temp2 = head->next, *x =temp, *y = temp2;
-        ListNode* lst2 = new ListNode(0), *cpy = lst2, *prev = head;
+        ListNode* temp = head, *x =temp, *prev = head;
+        ListNode* lst2 = new ListNode(0), *cpy = lst2;
         while(temp && temp->next){
             lst2->next = temp->next;
             lst2 = lst2->next;
             prev = temp;
             temp->next = temp->next->next;
             temp = temp->next;
-        }
-        if(lst2){
-            lst2->next = NULL;
-            lst2 = lst2->next;
-        }
+        }lst2->next = NULL;
         if(temp){
-        temp->next = cpy->next;
+            temp->next = cpy->next;
         }
         else{
             prev->next = cpy->next;
