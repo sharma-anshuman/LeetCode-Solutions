@@ -10,9 +10,6 @@ class Solution{
     public:
     //Function to find the minimum number of platforms required at the
     //railway station such that no train waits.
-    static bool compare(pair<int, int> m1, pair<int, int> m2){
-        return m1.second<m2.second;
-    }
     int findPlatform(int arr[], int dep[], int n)
     {
         sort(arr, arr+n);
