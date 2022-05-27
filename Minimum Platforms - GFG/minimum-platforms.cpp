@@ -15,36 +15,21 @@ class Solution{
     }
     int findPlatform(int arr[], int dep[], int n)
     {
-    	vector<pair<int, int>> train;
-    	for(int i = 0; i<n; i++){
-    	    train.push_back({arr[i], dep[i]});
-    	}
-    	sort(train.begin(), train.end(), compare);
-    // 	for(int i = 0; i<n; i++){
-    // 	    cout<<train[i].first<<' '<<train[i].second<<endl;
-    // 	}
-    	vector<int> last;
-    	last.push_back(-1);
-    	int mx = 0;
-    	for(int i = 0; i<n; i++){
-    	    
-    	        bool flag = true;
-    	        for(int k = last.size()-1; k>=0; k--){
-    	            if(train[i].first>last[k]){
-    	                last[k] = train[i].second;
-    	                sort(last.begin(), last.end());
-    	                flag = false;
-    	                break;
-    	            }
-    	        }
-    	        if(flag){
-    	            mx++;
-    	            last.push_back(train[i].second);
-    	        }
-    	        
-    	   
-    	}
-    	return last.size();
+        sort(arr, arr+n);
+        sort(dep, dep+n);
+        int i = 1, j = 0, temp = 1, mx = 1;
+        while(i<n){
+            if(arr[i]<=dep[j]){
+                i++;
+                temp++;
+            }
+            else{
+                mx = max(mx, temp);
+                j++;
+                temp--;
+            }
+        }
+        return mx;
     }
 };
 
