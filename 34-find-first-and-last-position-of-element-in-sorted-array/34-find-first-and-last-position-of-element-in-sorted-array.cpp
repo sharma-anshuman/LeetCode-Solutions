@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        //vector<int>::iterator it;
         vector<int> arr(2);
         arr[0] = arr[1] = -1;
         int x = lower_bound(nums.begin(), nums.end(), target) - nums.begin();
