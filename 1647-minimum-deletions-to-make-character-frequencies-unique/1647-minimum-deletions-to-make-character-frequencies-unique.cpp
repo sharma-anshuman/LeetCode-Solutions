@@ -16,14 +16,12 @@ public:
         bool flag = false;
         for(int i = 0; i<26; i++){
             while(ct[arr[i]] > 1){
-                //cout<<i<<' '<<arr[i]<<' '<<ct[arr[i]]<<endl;
                 flag = false;
                 int x = arr[i];
                 int p = 0;
                 for(int k = x-1; k>=0; k--){
                     p++;
                     if(!ct[k]){
-                        //cout<<k<<' '<<p<<endl;
                         ct[arr[i]]--;
                         arr[i] = k;
                         ct[k] = 1;
