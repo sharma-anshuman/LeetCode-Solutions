@@ -9,8 +9,6 @@ public:
         }
         stable_sort(pr.begin(), pr.end());
         
-        bool flag = false;
-        int x = 0;
         for(int i = 0; i<n; i++){
             int ct = pr[i].second;
             for(int j = 0; j<n; j++){
@@ -31,16 +29,3 @@ public:
         return ans;
     }
 };
-
-    // 4 4     5 0     5 0     5 0     5 0
-    // 5 0     5 2     6 1     7 0     7 0
-    // 5 2     6 1     5 2     6 1     5 2
-    // 6 1     7 0     7 0     5 2     6 1
-    // 7 0     4 4     4 4     4 4     4 4
-    // 7 1     7 1     7 1     7 1     7 1
-        // 14
-        // 22
-        // 32
-        // 40
-        // 50
-        // 60
