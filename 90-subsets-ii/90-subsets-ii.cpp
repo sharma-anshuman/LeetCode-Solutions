@@ -3,7 +3,7 @@ public:
     set<vector<int>> ans;
     void solve(vector<int> nums, int n, int i, vector<int> temp){
         if(i == n){
-            sort(temp.begin(), temp.end());
+            //sort(temp.begin(), temp.end());
             ans.insert(temp);
             return;
         }
@@ -14,6 +14,7 @@ public:
         
     }
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
         vector<int> x;
         solve(nums, nums.size(), 0, x);
         vector<vector<int>> fin;
