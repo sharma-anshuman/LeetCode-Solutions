@@ -32,36 +32,28 @@ class Solution
     }
     
     vector<int> JobScheduling(Job arr[], int n){ 
-        vector<pair<int, int>> pr(n);
-        for(int i = 0; i<n; i++){
-            pr[i] = {arr[i].dead, arr[i].profit};
-        }
-        sort(pr.begin(), pr.end(), compare);
+       vector<pair<int, int>> pr(n);
+       for(int i = 0; i<n; i++){
+           pr[i] = {arr[i].dead, arr[i].profit};
+       }
+       sort(pr.begin(), pr.end(), compare);
        int deadline[101];
+       int ans = 0, profit = 0;
        memset(deadline, 0, sizeof(deadline));
-       int sum = 0, ans = 0, temp = 0;
-        for(int i = 0; i<n; i++){
-            if(deadline[pr[i].first]){
-                for(int j = pr[i].first-1; j>=1; j--){
-                    if(deadline[j] == 0){
-                        deadline[j] = 1;
-                        temp++;
-                        ans+=pr[i].second;
-                        break;
-                    }
-                }
-            }
-            
-            else{
-                deadline[pr[i].first] = 1;
-                temp++;
-                ans+=pr[i].second;
-            }
-        }
-        vector<int> fin(2);
-        fin[0] = temp;
-        fin[1] = ans;
-        return fin;
+       for(int i = 0; i<n; i++){
+          for(int j = pr[i].first; j>=1; j--){
+              if(!deadline[j]){
+                  deadline[j] = 1;
+                  ans++;
+                  profit+=pr[i].second;
+                  break;
+              }
+          }
+       }
+       vector<int> x(2);
+       x[0] = ans;
+       x[1] = profit;
+       return x;
     }
 };
 
