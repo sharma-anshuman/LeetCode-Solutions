@@ -2,52 +2,30 @@ class Solution {
 public:
     
     int wiggleMaxLength(vector<int>& nums) {
-        int arr[nums.size()-1];
-        if(nums.size() == 1) return 1;
+        vector<int> arr;
         for(int i = 1; i<nums.size(); i++){
-            if(nums[i] - nums[i-1]>0) arr[i-1] = 1;
-            else if(nums[i] - nums[i-1] < 0) arr[i-1] = 0;
-            else arr[i-1] = -1;
+            int x = nums[i] - nums[i-1];
+            if(x>0) arr.emplace_back(1);
+            else if(x<0) arr.emplace_back(0);
         }
-        int ans = 1;
-        int temp = 0, last = 1;
-        
-        //for pos
-        bool flag1 = false;
-        bool flag2 = false;
-        
-        for(int i = 0; i<nums.size()-1; i++){
-            last = 1;
-            temp = 0;
-            for(int j = i; j<nums.size()-1; j++){
-                if(arr[j] == -1) continue;
-                if(arr[j] != last){
-                    flag1 = true;
-                    last = arr[j];
-                    temp++;
-                }
+        //for 1 first;
+        int one = 0, lst = 1, zero = 0;
+        for(int i = 0; i<arr.size(); i++){
+            if(arr[i] == lst){
+                lst = !lst;
+                one++;
             }
-            ans = max(ans, temp);
         }
-        
-        //for neg
-        temp = 0;
-        for(int i = 0; i<nums.size()-1; i++){
-            last = 0;
-            temp = 0;
-            for(int j = i; j<nums.size()-1; j++){
-                if(arr[j] == -1) continue;
-                if(arr[j] != last){
-                    flag2 = true;
-                    last = arr[j];
-                    temp++;
-                }
+        lst = 0;
+        for(int i = 0; i<arr.size(); i++){
+            if(arr[i] == lst){
+                lst = !lst;
+                zero++;
             }
-            ans = max(ans, temp);
         }
         
-        if(!flag1 && !flag2) return 1;
-        return ans+1;
+        return max(one, zero)+1;
+        
         //0 1 0 0 1 1 0 1 0
         
     }
