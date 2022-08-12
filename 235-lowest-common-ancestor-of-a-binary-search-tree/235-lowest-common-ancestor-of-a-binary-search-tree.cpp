@@ -11,43 +11,49 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        map<TreeNode*, int> m1;
+        map<int, int> m;
         TreeNode* temp = root;
-        while(temp!=p){
-            if(temp->val>p->val){
-                m1[temp] = 1;
+        while(true){
+            if(temp == p){
+                m[p->val] = 1;
+                break;
+            }
+            if(temp->val > p->val){
+                m[temp->val] = 1;
                 temp = temp->left;
                 continue;
             }
-            if(temp->val<p->val){
-                m1[temp] = 1;
+            if(temp->val < p->val){
+                m[temp->val] = 1;
                 temp = temp->right;
                 continue;
             }
-        }
-        m1[temp] = 1;
-        temp = root;
+        }temp = root;
         TreeNode* ans = root;
-        while(temp!=q){
-            if(m1[temp] == 1){
-                ans = temp;
+        while(true){
+            if(temp == q){
+                if(m[temp->val] == 1){
+                    ans = temp;
+                    break;
+                }
+                break;
             }
-            if(temp->val>q->val){
+            if(temp->val > q->val){
+                if(m[temp->val]){
+                    ans = temp;
+                }
                 temp = temp->left;
                 continue;
             }
-            if(temp->val<q->val){
+            if(temp->val < q->val){
+                if(m[temp->val]){
+                    ans = temp;
+                }
                 temp = temp->right;
                 continue;
             }
         }
-        
-        if(m1[temp] == 1){
-            ans = temp;
-        }
-        
         return ans;
-        
         
     }
 };
