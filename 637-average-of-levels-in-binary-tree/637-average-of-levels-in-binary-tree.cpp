@@ -13,16 +13,15 @@ class Solution {
 public:
     vector<double> averageOfLevels(TreeNode* root) {
         vector<double> arr;
-        TreeNode* nul = NULL;
         queue<TreeNode*> qu;
         qu.push(root);
-        qu.push(nul);
+        qu.push(NULL);
         double x = 0, sum = 0;
         while(!qu.empty()){
             if(qu.front() == NULL){
                 arr.emplace_back(sum/x);
                 qu.pop();
-                if(!qu.empty()) qu.push(nul);
+                if(!qu.empty()) qu.push(NULL);
                 sum = 0, x = 0;
                 continue;
             }
