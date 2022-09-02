@@ -22,20 +22,14 @@ public:
             if(qu.front() == NULL){
                 arr.emplace_back(sum/x);
                 qu.pop();
-                if(!qu.empty()){
-                    qu.push(nul);
-                }
+                if(!qu.empty()) qu.push(nul);
                 sum = 0, x = 0;
                 continue;
             }
             sum+=(qu.front()->val);
-            if(qu.front()->left){
-                qu.push(qu.front()->left);
-            }if(qu.front()->right){
-                qu.push(qu.front()->right);
-            }
-            qu.pop();
-            x++;
+            if(qu.front()->left) qu.push(qu.front()->left);
+            if(qu.front()->right) qu.push(qu.front()->right);
+            qu.pop(), x++;
         }
         return arr;
     }
