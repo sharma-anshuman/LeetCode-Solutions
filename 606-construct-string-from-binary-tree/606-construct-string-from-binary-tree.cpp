@@ -34,15 +34,12 @@ public:
             fin+=')';
             return;
         }
-        if(root->right && root->left){
-            fin+=tmp;
-            fin+='(';
-            answer(root->left);
-            fin+=")(";
-            answer(root->right);
-            fin+=')';
-            return;
-        }
+        fin+=tmp;
+        fin+='(';
+        answer(root->left);
+        fin+=")(";
+        answer(root->right);
+        fin+=')';
     }
     string tree2str(TreeNode* root) {
         answer(root);
