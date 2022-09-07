@@ -16,25 +16,22 @@ public:
     void answer(TreeNode* root){
         if(root == NULL) return;
         string tmp = to_string(root->val);
+        fin+=tmp;
         if(root->left == NULL && root->right == NULL){
-            fin+=tmp;
             return;
         }
         if(root->right == NULL){
-            fin+=tmp;
             fin+='(';
             answer(root->left);
             fin+=')';
             return;
         }
         if(root->left == NULL){
-            fin+=tmp;
             fin+="()(";
             answer(root->right);
             fin+=')';
             return;
         }
-        fin+=tmp;
         fin+='(';
         answer(root->left);
         fin+=")(";
