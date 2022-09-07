@@ -14,7 +14,6 @@ public:
     string fin = "";
     
     void answer(TreeNode* root){
-        if(root == NULL) return;
         string tmp = to_string(root->val);
         fin+=tmp;
         if(root->left == NULL && root->right == NULL){
